@@ -8,5 +8,7 @@ public class AboutMe {
 
     System.out.println("나는" + lastName + " " + firstName + "입니다");
     System.out.println(phone + " is " + status);
+
+    System.out.println(firstName.length());
   }
 }
