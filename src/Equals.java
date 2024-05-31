@@ -4,7 +4,7 @@ public class Equals {
     String c = new String("hello");
 
     //    System.out.println(a.equals(b)); // true
-    //    System.out.println(a == b); // falss
+    //    System.out.println(a == b); // false
     //    System.out.println(a.indexOf('h'));
     //    System.out.println(a.indexOf('i'));
     //    System.out.println(a.indexOf('l'));
