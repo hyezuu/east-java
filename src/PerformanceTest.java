@@ -27,11 +27,11 @@ public class PerformanceTest {
     //    System.out.println(System.identityHashCode(arr[1]));
     //    System.out.println(System.identityHashCode(arr[2]));
 
-    String[] arr = new String[100];
-    try {
-      System.out.println(arr[0].length());
-    } catch (NullPointerException e) {
-      throw new RuntimeException("널 위한 예외처리 ㅋ");
-    }
+//    String[] arr = new String[100];
+//    try {
+//      System.out.println(arr[0].length());
+//    } catch (NullPointerException e) {
+//      throw new RuntimeException("널 위한 예외처리 ㅋ");
+//    }
   }
 }
