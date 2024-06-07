@@ -12,33 +12,68 @@ public class Test {
 
     return sb.toString();
   }
-  public String test2(String my_string,  int s, int e){
+
+  public String test2(String my_string, int s, int e) {
     StringBuilder answer = new StringBuilder(my_string.substring(s, e + 1));
     answer.reverse();
     return my_string.substring(0, s) + answer + my_string.substring(e + 1);
   }
+
   public static void main(String[] args) {
-      Test T = new Test();
-      String my_string = "Progra21Sremm3";
-      int s = 6;
-      int e = 12;
+    Test T = new Test();
+    String my_string = "Progra21Sremm3";
+    int s = 6;
+    int e = 12;
 
-      long startTime = System.nanoTime();
-      String result1 = T.test1(my_string, s, e);
-      long endTime = System.nanoTime();
-      long duration1 = endTime - startTime;
-      System.out.println("test1 duration: " + duration1 + " nanoseconds");
+/*    // Warm-up phase
+    for (int i = 0; i < 10000; i++) {
+      T.test1(my_string, s, e);
+      T.test2(my_string, s, e);
+    }
 
+    long startTime, endTime;
+    long duration1 = 0, duration2 = 0;
+
+    // Measure test1
+    for (int i = 0; i < 10000; i++) {
       startTime = System.nanoTime();
-      String result2 = T.test2(my_string, s, e);
+      T.test1(my_string, s, e);
       endTime = System.nanoTime();
-      long duration2 = endTime - startTime;
-      System.out.println("test2 duration: " + duration2 + " nanoseconds");
+      duration1 += (endTime - startTime);
+    }
 
-      System.out.println("test1 result: " + result1);
-      System.out.println("test2 result: " + result2);
+    // Measure test2
+    for (int i = 0; i < 10000; i++) {
+      startTime = System.nanoTime();
+      T.test2(my_string, s, e);
+      endTime = System.nanoTime();
+      duration2 += (endTime - startTime);
+    }
 
+    System.out.println("test1 duration: " + (duration1 / 10000) + " nanoseconds");
+    System.out.println("test2 duration: " + (duration2 / 10000) + " nanoseconds");
 
+    String result1 = T.test1(my_string, s, e);
+    String result2 = T.test2(my_string, s, e);
+
+    System.out.println("test1 result: " + result1);
+    System.out.println("test2 result: " + result2);*/
+
+          long startTime = System.nanoTime();
+          String result1 = T.test1(my_string, s, e);
+          long endTime = System.nanoTime();
+          long duration1 = endTime - startTime;
+          System.out.println("test1 duration: " + duration1 + " nanoseconds");
+
+          startTime = System.nanoTime();
+          String result2 = T.test2(my_string, s, e);
+          endTime = System.nanoTime();
+          long duration2 = endTime - startTime;
+          System.out.println("test2 duration: " + duration2 + " nanoseconds");
+
+          System.out.println("test1 result: " + result1);
+          System.out.println("test2 result: " + result2);
+    Scanner sc = new Scanner(System.in);
     //    Scanner sc = new Scanner(System.in);
     //
     //    System.out.println("1에서 4 사이의 숫자를 입력하세요");
