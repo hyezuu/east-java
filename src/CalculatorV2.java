@@ -10,8 +10,8 @@ public class CalculatorV2 {
                 break;
             }
 
-            long num1 = getNumber(scanner, "첫번째");
-            long num2 = getNumber(scanner, "두번째");
+            double num1 = getNumber(scanner, "첫번째");
+            double num2 = getNumber(scanner, "두번째");
 
             num2 = checkValidNumber(function, num2, scanner);
 
@@ -21,9 +21,9 @@ public class CalculatorV2 {
         scanner.close();
     }
 
-    private static long checkValidNumber(int function, long num2, Scanner scanner) {
+    private static double checkValidNumber(int function, double num2, Scanner scanner) {
         while (function == 4 && num2 == 0) {
-            System.out.println("0으로 나눌 수 없습니다! 두번째 값을 다시 입력해 주세요");
+            System.out.print("0으로 나눌 수 없습니다! ");
             num2 = getNumber(scanner, "두번째");
         }
         return num2;
@@ -31,23 +31,23 @@ public class CalculatorV2 {
 
     private static int getFunctionChoice(Scanner scanner) {
         System.out.println("원하는 기능을 선택하세요");
-        System.out.println("1. 덧셈, 2. 뺄셈, 3. 곱셈, 4. 나눗셈, 0. 종료");
+        System.out.println("1. 덧셈, /2. 뺄셈, /3. 곱셈, /4. 나눗셈, /0. 종료");
 
         int function = scanner.nextInt();
         while (function < 0 || function > 4) {
             System.out.println("올바른 입력이 아닙니다. 다시 입력해 주세요.");
-            System.out.println("1. 덧셈, 2. 뺄셈, 3. 곱셈, 4. 나눗셈, 0. 종료");
+            System.out.println("1. 덧셈, /2. 뺄셈, /3. 곱셈, /4. 나눗셈, /0. 종료");
             function = scanner.nextInt();
         }
         return function;
     }
 
-    private static long getNumber(Scanner scanner, String order) {
+    private static double getNumber(Scanner scanner, String order) {
         System.out.println(order + " 값을 입력하고 엔터를 누르세요");
-        return scanner.nextLong();
+        return scanner.nextDouble();
     }
 
-    private static double calculate(int function, long num1, long num2) {
+    private static double calculate(int function, double num1, double num2) {
         return switch (function) {
             case 1 -> num1 + num2;
             case 2 -> num1 - num2;
@@ -57,11 +57,11 @@ public class CalculatorV2 {
         };
     }
 
-    private static void printResult(int function, long num1, long num2, double result) {
+    private static void printResult(int function, double num1, double num2, double result) {
         String[] operators = {"+", "-", "*", "/"};
         String answer = (function == 4 && num1 % num2 != 0) ? String.format("%.2f", result) : String.valueOf((int) result);
 
-        System.out.printf("%d %s %d = %s", num1, operators[function - 1], num2, answer);
+        System.out.printf("%d %s %d = %s", (int)num1, operators[function - 1], (int)num2, answer);
         System.out.println();
     }
 }
