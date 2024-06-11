@@ -1,7 +1,7 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CalculatorV2 {
+public class CalculatorV3 {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -22,6 +22,13 @@ public class CalculatorV2 {
             printResult(function, num1, num2, result);
         }
         scanner.close();
+    }
+    private double getInput(Scanner scanner) {
+        try{
+            return Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e){
+            System.out.print("잘못된 입력입니다. 다시 입력해주세요");
+        }
     }
 
     private static double checkValidNumber(int function, double num2, Scanner scanner) {
