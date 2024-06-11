@@ -23,13 +23,13 @@ public class CalculatorV3 {
         }
         scanner.close();
     }
-    private double getInput(Scanner scanner) {
-        try{
-            return Double.parseDouble(scanner.nextLine());
-        } catch (NumberFormatException e){
-            System.out.print("잘못된 입력입니다. 다시 입력해주세요");
-        }
-    }
+//    private double getInput(Scanner scanner) {
+//        try{
+//            return Double.parseDouble(scanner.nextLine());
+//        } catch (NumberFormatException e){
+//            System.out.print("잘못된 입력입니다. 다시 입력해주세요");
+//        }
+//    }
 
     private static double checkValidNumber(int function, double num2, Scanner scanner) {
         while (function == 4 && num2 == 0) {
