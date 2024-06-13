@@ -5,10 +5,10 @@ public class CalculatorV2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-
             int function = getFunctionChoice(scanner);
 
             if (function == 0) {
+                System.out.println(getAzJoke(function));
                 System.out.print("계산기를 종료합니다.");
                 break;
             }
@@ -20,6 +20,7 @@ public class CalculatorV2 {
 
             double result = calculate(function, num1, num2);
             printResult(function, num1, num2, result);
+            scanner.nextLine();
         }
         scanner.close();
     }
@@ -38,7 +39,6 @@ public class CalculatorV2 {
             try {
                 System.out.println("원하는 기능을 선택하세요");
                 System.out.println("1. 덧셈, /2. 뺄셈, /3. 곱셈, /4. 나눗셈, /0. 종료");
-
                 int function = Integer.parseInt(scanner.nextLine());
                 if (function >= 0 && function <= 4) {
                     return function;
@@ -66,11 +66,22 @@ public class CalculatorV2 {
         };
     }
 
+    private static String getAzJoke(int function){
+        return switch (function) {
+            case 1 -> "복은 ~ 덧셈 + ^^";
+            case 2 -> "나이는 ~ 뺄셈 - ^^";
+            case 3 -> "돈은 ~ 곱셈 x ^^";
+            case 4 -> "사랑은 ~ 나눗셈 / ^^";
+            default -> "건강은 ~지키셈 ㅎ";
+        };
+
+    }
+
     private static void printResult(int function, double num1, double num2, double result) {
         String[] operators = {"+", "-", "*", "/"};
         String answer = (function == 4 && num1 % num2 != 0) ? String.format("%.2f", result) : String.valueOf((int) result);
 
-        System.out.printf("%d %s %d = %s", (int)num1, operators[function - 1], (int)num2, answer);
+        System.out.printf("%s\n%d %s %d = %s", getAzJoke(function),(int)num1, operators[function - 1], (int)num2, answer);
         System.out.println();
     }
 }
