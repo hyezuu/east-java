@@ -1,7 +1,7 @@
 package day0613;
 
 public class Person {
-    private String name;
+    protected String name;
 //    private String ssn;
 
 //    public Person(String name) {
@@ -9,7 +9,7 @@ public class Person {
 ////        this.ssn = ssn;
 //    }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 
