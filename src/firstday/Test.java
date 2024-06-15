@@ -1,5 +1,5 @@
-import java.util.Arrays;
-import java.util.List;
+package firstday;
+
 import java.util.StringTokenizer;
 
 public class Test {

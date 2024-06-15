@@ -4,20 +4,14 @@ import shoppingmall.product.Product;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Food extends Product {
     private LocalDateTime expirationDate;
-    private static final Map<Long, Double> DISCOUNT_RATE;
+    private static final double DISCOUNT_RATE = 0.8;
+    private static final long DISCOUNT_THRESHOLD_DAYS = 7;
 
-    static {
-        DISCOUNT_RATE = new HashMap<>();
-        DISCOUNT_RATE.put(7L, 0.8);
-    }
-
-    public Food(String name, int price, int stock, LocalDateTime expirationDate) {
-        super(name, price, stock);
+    public Food(Long id, String name, int price, int stock, LocalDateTime expirationDate) {
+        super(id, name, price, stock);
         this.expirationDate = expirationDate;
     }
 
@@ -33,7 +27,8 @@ public class Food extends Product {
     public double calculatePrice() {
         LocalDateTime now = LocalDateTime.now();
         long daysUntilExpiration = Duration.between(now, expirationDate).toDays();
-        double discountRate = DISCOUNT_RATE.getOrDefault(daysUntilExpiration, 1.0);
+
+        double discountRate = daysUntilExpiration <= DISCOUNT_THRESHOLD_DAYS ? DISCOUNT_RATE : 1;
         return super.getPrice() * discountRate;
     }
 }

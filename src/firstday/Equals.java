@@ -1,3 +1,5 @@
+package firstday;
+
 public class Equals {
   public static void main(String[] args) {
     String a = "hello";

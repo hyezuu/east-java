@@ -1,3 +1,5 @@
+package firstday;
+
 public class StrTest {
   public static void main(String[] args) {
     String str01 = "Hello";

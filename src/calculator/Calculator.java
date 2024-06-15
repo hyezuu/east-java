@@ -1,3 +1,5 @@
+package calculator;
+
 import java.util.Scanner;
 
 public class Calculator {
@@ -7,7 +9,7 @@ public class Calculator {
         while (true) {
             System.out.println("원하는 기능을 선택하세요");
             System.out.println("1. 덧셈, /2. 뺄셈, /3. 곱셈, /4. 나눗셈, /0.종료");
-            
+
             int function = scanner.nextInt();
             if (function == 0) {
                 System.out.print("계산기를 종료합니다.");

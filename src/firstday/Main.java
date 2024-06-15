@@ -1,3 +1,5 @@
+package firstday;
+
 public class Main implements TestInterface{
   public static void main(String[] args) {
     /*

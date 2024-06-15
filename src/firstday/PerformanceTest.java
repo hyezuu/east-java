@@ -1,3 +1,5 @@
+package firstday;
+
 public class PerformanceTest {
   public static void main(String[] args) {
     //        long startTime, endTime;
