@@ -16,6 +16,10 @@ public class KiaCar implements Car{
         return this.engine;
     }
 
+    public void printKia(){
+        System.out.println("this is kia car");
+    }
+
     @Override
     public double amountNavi() {
         return this.naviPrice;
