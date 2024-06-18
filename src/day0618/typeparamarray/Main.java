@@ -1,7 +1,6 @@
 package day0618.typeparamarray;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,8 +27,6 @@ public class Main {
         registerCourse(highStudentCourse);
 
         System.out.println("=".repeat(15));
-        System.out.println("=".repeat(15));
-        System.out.println("=".repeat(15));
 
 //        registerCourseForStudent(personCourse);
 //        registerCourseForStudent(workerCourse); //컴파일에러
@@ -37,13 +34,10 @@ public class Main {
         registerCourseForStudent(highStudentCourse);
 
         System.out.println("=".repeat(15));
-        System.out.println("=".repeat(15));
-        System.out.println("=".repeat(15));
-
 
         registerCourseForWorker(personCourse);
         registerCourseForWorker(workerCourse);
-//        registerCourseForWorker(studentCourse); //컴파일
+//        registerCourseForWorker(studentCourse); //컴파일에러
 //        registerCourseForWorker(highStudentCourse);
     }
 

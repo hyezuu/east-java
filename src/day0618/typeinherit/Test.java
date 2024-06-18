@@ -9,5 +9,6 @@ public class Test {
 
         StorageImpl<Tv> tvStorage = new StorageImpl<>(5);
         tvStorage.add(new Tv(), 0);
+
     }
 }
