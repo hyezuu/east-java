@@ -1,6 +1,7 @@
 package day0618.typeinherit;
+
 //부모 제네릭 클래스
-public class Product <T,M>{
+public class Product<T, M> {
     private T kind;
     private M model;
 
