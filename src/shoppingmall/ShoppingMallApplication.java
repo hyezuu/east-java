@@ -11,7 +11,8 @@ import java.time.LocalDateTime;
 
 public class ShoppingMallApplication {
     public static void main(String[] args) {
-        PremiumShoppingMall shoppingMall = new PremiumShoppingMall(new Product[]{
+        System.out.println("==========삭제 전==========");
+        Product[] products = new Product[]{
                 //애플 추가요금 적용
                 new Electronics(1L, "맥북", 2000000, 10, "Apple"),
                 //애플 추가요금 x
@@ -24,7 +25,12 @@ public class ShoppingMallApplication {
                 new Clothing(5L, "회색후드집업", 20000, 10, Size.L),
                 //사이즈 추가요금 x
                 new Clothing(6L, "회색후드집업", 20000, 10, Size.M),
-        });
+        };
+
+        PremiumShoppingMall shoppingMall = new PremiumShoppingMall(products);
+
+        //상품 목록 출력
+        shoppingMall.displayProducts();
 
         System.out.println();
         System.out.println("기존 크기 : " + shoppingMall.getProducts().length);
@@ -33,21 +39,27 @@ public class ShoppingMallApplication {
         shoppingMall.addProduct(new Clothing(8L, "노란색후드집업", 20000, 10, Size.L));
         shoppingMall.addProduct(new Clothing(9L, "검정색후드집업", 20000, 9, Size.L));
 
-
         System.out.println("증가된 크기 : " + shoppingMall.getProducts().length);
+        System.out.println();
+
+
+        Product product = shoppingMall.findById(1L);
+        //제품 삭제(객체)
+        shoppingMall.removeProduct(product);
+        //제품 삭제(문자열)
+        shoppingMall.removeProduct("삼각김밥");
 
         System.out.println();
-        //제품 삭제
-        shoppingMall.removeProduct(shoppingMall.findById(1L));
-
-        System.out.println();
+        System.out.println("==========삭제 후==========");
         //상품 목록 출력
         shoppingMall.displayProducts();
         System.out.println();
 
         //재고 10미만
-        System.out.println("재고 10미만 : " + shoppingMall.checkOrderAvailability(shoppingMall.findById(9L)));
+        Product underStock = shoppingMall.findById(9L);
         //재고 10이상
-        System.out.println("재고 10이상 : " + shoppingMall.checkOrderAvailability(shoppingMall.findById(8L)));
+        Product overStock = shoppingMall.findById(8L);
+        System.out.println("재고 10미만 : " + shoppingMall.checkOrderAvailability(underStock));
+        System.out.println("재고 10이상 : " + shoppingMall.checkOrderAvailability(overStock));
     }
 }

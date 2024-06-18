@@ -6,7 +6,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Food extends Product {
-    private LocalDateTime expirationDate;
+    private final LocalDateTime expirationDate;
     private static final double DISCOUNT_RATE = 0.8;
     private static final long DISCOUNT_THRESHOLD_DAYS = 7;
 
@@ -17,10 +17,6 @@ public class Food extends Product {
 
     public LocalDateTime getExpirationDate() {
         return expirationDate;
-    }
-
-    public void setExpirationDate(LocalDateTime expirationDate) {
-        this.expirationDate = expirationDate;
     }
 
     @Override

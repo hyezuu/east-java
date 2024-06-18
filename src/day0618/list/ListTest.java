@@ -1,7 +1,6 @@
 package day0618.list;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,5 +23,6 @@ public class ListTest {
         }
         endTime = System.nanoTime();
         System.out.println("linkList 걸린시간: " + (endTime - startTime));
+
     }
 }

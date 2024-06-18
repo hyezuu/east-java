@@ -3,7 +3,7 @@ package shoppingmall.product;
 public abstract class Product {
     private final Long id;
     private String name;
-    private final double price;
+    private double price;
     private int stock;
 
     public Product(Long id, String name, double price, int stock) {
@@ -41,5 +41,9 @@ public abstract class Product {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
