@@ -31,4 +31,9 @@ public class Food extends Product {
         double discountRate = daysUntilExpiration <= DISCOUNT_THRESHOLD_DAYS ? DISCOUNT_RATE : 1;
         return super.getPrice() * discountRate;
     }
+
+    @Override
+    public void printAdditionalInformation() {
+        System.out.println("유통기한 :" + getExpirationDate().toLocalDate());
+    }
 }

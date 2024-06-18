@@ -1,6 +1,6 @@
 package shoppingmall.product;
 
-public class Product {
+public abstract class Product {
     private final Long id;
     private String name;
     private final double price;
@@ -12,6 +12,8 @@ public class Product {
         this.price = price;
         this.stock = stock;
     }
+
+    public abstract void printAdditionalInformation();
 
     public Long getId() {
         return id;

@@ -20,6 +20,11 @@ public class Clothing extends Product {
         return this.getPrice();
     }
 
+    @Override
+    public void printAdditionalInformation() {
+        System.out.println("사이즈 :" + getSize());
+    }
+
     public Size getSize() {
         return size;
     }

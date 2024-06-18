@@ -25,6 +25,11 @@ public class Electronics extends Product {
         return super.getPrice() * surchargeRate;
     }
 
+    @Override
+    public void printAdditionalInformation() {
+        System.out.println("브랜드 :" + this.getBrand());
+    }
+
     public String getBrand() {
         return brand;
     }

@@ -142,15 +142,7 @@ public abstract class ShoppingMall {
     }
 
     public void getAdditionalInformation(Product product) {
-        if (product instanceof Food) {
-            System.out.println("유통기한 :" + ((Food) product).getExpirationDate().toLocalDate());
-        }
-        if (product instanceof Clothing) {
-            System.out.println("사이즈 :" + ((Clothing) product).getSize());
-        }
-        if (product instanceof Electronics) {
-            System.out.println("브랜드 :" + ((Electronics) product).getBrand());
-        }
+        product.printAdditionalInformation();
     }
 
     public abstract boolean checkOrderAvailability(Product product);
