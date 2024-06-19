@@ -16,16 +16,16 @@ public class Main {
             Message message = messageQueue.poll();
             switch (message.getCommand()) {
                 case "sendMail":
-                    System.out.println(message.getTo() + "메일을 보냅니다.");
+                    System.out.println(message.getTo() + "에게 메일을 보냅니다.");
                     break;
                 case "sendSms":
-                    System.out.println(message.getTo() + "SMS를 보냅니다.");
+                    System.out.println(message.getTo() + "에게 SMS를 보냅니다.");
                     break;
                 case "sendKakaoTalk":
-                    System.out.println(message.getTo() + "카카오톡을 보냅니다.");
+                    System.out.println(message.getTo() + "에게 카카오톡을 보냅니다.");
                     break;
                 default:
-                    System.out.println(message.getTo() + "아무거나 보냅니다.");
+                    System.out.println(message.getTo() + "에게 아무거나 보냅니다.");
                     break;
             }
         }
