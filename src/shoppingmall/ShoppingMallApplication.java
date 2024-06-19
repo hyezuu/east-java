@@ -1,5 +1,6 @@
 package shoppingmall;
 
+import shoppingmall.exception.ProductNotFoundException;
 import shoppingmall.product.Product;
 import shoppingmall.product.subproduct.Clothing;
 import shoppingmall.product.subproduct.Electronics;
@@ -42,10 +43,18 @@ public class ShoppingMallApplication {
         System.out.println("증가된 크기 : " + shoppingMall.getProducts().length);
         System.out.println();
 
-
         Product product = shoppingMall.findById(1L);
         //제품 삭제(객체)
         shoppingMall.removeProduct(product);
+
+        //삭제 메서드 예외처리(존재하지 않는 객체를 삭제하려고 할 경우.)
+        try {
+            //이미 삭제된 객체(products에 존재하지 않음)
+            Product product1 = shoppingMall.findById(1L);
+            shoppingMall.removeProduct(product1);
+        } catch (ProductNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
         //제품 삭제(문자열)
         shoppingMall.removeProduct("삼각김밥");
 
