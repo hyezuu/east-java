@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    private static final String INPUT_BOOK_COUNT_MESSAGE = ;
-    private static final String BOOK_COUNT_PROMPT = ;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
