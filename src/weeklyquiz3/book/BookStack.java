@@ -1,4 +1,4 @@
-package weeklyquiz3;
+package weeklyquiz3.book;
 
 import weeklyquiz3.exception.EmptyStackException;
 

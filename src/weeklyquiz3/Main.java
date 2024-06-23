@@ -1,5 +1,8 @@
 package weeklyquiz3;
 
+import weeklyquiz3.book.Book;
+import weeklyquiz3.book.BookShelf;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package weeklyquiz3;
+package weeklyquiz3.book;
 
 public class Book<T> {
     private final String title;

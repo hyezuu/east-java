@@ -1,4 +1,4 @@
-package weeklyquiz3;
+package weeklyquiz3.book;
 
 import java.util.List;
 import java.util.function.Predicate;
