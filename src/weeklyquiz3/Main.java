@@ -97,7 +97,7 @@ public class Main {
     private static class BookStackProcessor {
         static void printBookStack(BookStack<Integer> bookStack) {
             System.out.println("-------------BookStack-------------");
-            for (Book book : bookStack.getBooks()) {
+            for (Book<Integer> book : bookStack.getBooks()) {
                 System.out.println(book);
             }
         }
@@ -131,7 +131,7 @@ public class Main {
     private static class BookShelfProcessor {
         static void printBookShelf(BookShelf<String> bookShelf) {
             System.out.println("-------------BookShelf-------------");
-            for (Book book : bookShelf.getBooks()) {
+            for (Book<String> book : bookShelf.getBooks()) {
                 System.out.println(book);
             }
         }
