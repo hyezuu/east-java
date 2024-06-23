@@ -1,5 +1,7 @@
 package weeklyquiz3;
 
+import weeklyquiz3.exception.EmptyStackException;
+
 import java.util.Stack;
 
 public class BookStack<T> {
