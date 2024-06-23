@@ -6,6 +6,10 @@ import java.util.function.Predicate;
 public class BookShelf<T> implements BookManager<T> {
     private final List<Book<T>> books;
 
+    public List<Book<T>> getBooks() {
+        return books;
+    }
+
     public BookShelf(List<Book<T>> books) {
         this.books = books;
     }

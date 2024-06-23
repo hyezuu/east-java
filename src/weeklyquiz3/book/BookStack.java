@@ -11,11 +11,18 @@ public class BookStack<T> {
         this.books = new Stack<>();
     }
 
+    public Stack<Book<T>> getBooks() {
+        return books;
+    }
+
     public void pushBook(Book<T> book) {
         this.books.push(book);
     }
 
     public Book<T> popBook() {
+        if(this.books.isEmpty()) {
+            throw new EmptyStackException("BookStack is empty");
+        }
         return this.books.pop();
     }
 
