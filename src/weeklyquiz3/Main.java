@@ -117,9 +117,7 @@ public class Main {
             System.out.println("------------------------------------");
             try {
                 Book<Integer> topBook = bookStack.peekBook();
-                System.out.println("도서 제목: " + topBook.getTitle());
-                System.out.println("도서 저자: " + topBook.getAuthor());
-                System.out.println("도서 식별자: " + topBook.getIdentifier());
+                printBookInformation(topBook);
             } catch (EmptyStackException e) {
                 System.out.println(e.getMessage());
             }
@@ -131,13 +129,17 @@ public class Main {
             System.out.println("------------------------------------");
             try {
                 Book<Integer> poppedBook = bookStack.popBook();
-                System.out.println("도서 제목: " + poppedBook.getTitle());
-                System.out.println("도서 저자: " + poppedBook.getAuthor());
-                System.out.println("도서 식별자: " + poppedBook.getIdentifier());
+                printBookInformation(poppedBook);
             } catch (EmptyStackException e) {
                 System.out.println(e.getMessage());
             }
             System.out.println();
+        }
+
+        private static void printBookInformation(Book<Integer> book) {
+            System.out.println("도서 제목: " + book.getTitle());
+            System.out.println("도서 저자: " + book.getAuthor());
+            System.out.println("도서 식별자: " + book.getIdentifier());
         }
 
         static void printStackIsEmpty(BookStack<Integer> bookStack) {
