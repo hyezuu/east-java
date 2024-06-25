@@ -1,7 +1,7 @@
 package weeklyquiz3.book;
 
-import weeklyquiz3.exception.EmptyStackException;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class BookStack<T> {
@@ -21,14 +21,14 @@ public class BookStack<T> {
 
     public Book<T> popBook() {
         if(this.books.isEmpty()) {
-            throw new EmptyStackException("BookStack is empty");
+            throw new EmptyStackException();
         }
         return this.books.pop();
     }
 
     public Book<T> peekBook() {
         if(this.books.isEmpty()) {
-            throw new EmptyStackException("BookStack is empty");
+            throw new EmptyStackException();
         }
         return this.books.peek();
     }
