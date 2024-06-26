@@ -1,0 +1,438 @@
+Last login: Wed Jun 26 04:20:01 on ttys000
+ganghyeju@hyezuu-MacBookPro ~ % mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 57
+Server version: 8.3.0 Homebrew
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| testdb             |
++--------------------+
+5 rows in set (0.03 sec)
+
+mysql> use testdb
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> create table ANIMAL_INS()
+    -> a
+    -> ';
+    '> ;
+    '> ;
+    '> :wq
+    '> /c
+    '> '
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+a
+';
+;
+;
+:wq
+/c
+'' at line 1
+mysql> create table ANIMAL_INS (
+    -> ANIMAL_ID varchar(20) not null,
+    -> ANIMAL_TYPE varchar(10) not null,
+    -> DATETIME datetime not null,
+    -> INTAKE_CONDITION varchar(10) not null,
+    -> name varchar(50),
+    -> sex_upon_intake varchar(100) not null
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc ANIMAL_INS;
++------------------+--------------+------+-----+---------+-------+
+| Field            | Type         | Null | Key | Default | Extra |
++------------------+--------------+------+-----+---------+-------+
+| ANIMAL_ID        | varchar(20)  | NO   |     | NULL    |       |
+| ANIMAL_TYPE      | varchar(10)  | NO   |     | NULL    |       |
+| DATETIME         | datetime     | NO   |     | NULL    |       |
+| INTAKE_CONDITION | varchar(10)  | NO   |     | NULL    |       |
+| name             | varchar(50)  | YES  |     | NULL    |       |
+| sex_upon_intake  | varchar(100) | NO   |     | NULL    |       |
++------------------+--------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> desc animal_ins;
++------------------+--------------+------+-----+---------+-------+
+| Field            | Type         | Null | Key | Default | Extra |
++------------------+--------------+------+-----+---------+-------+
+| ANIMAL_ID        | varchar(20)  | NO   |     | NULL    |       |
+| ANIMAL_TYPE      | varchar(10)  | NO   |     | NULL    |       |
+| DATETIME         | datetime     | NO   |     | NULL    |       |
+| INTAKE_CONDITION | varchar(10)  | NO   |     | NULL    |       |
+| name             | varchar(50)  | YES  |     | NULL    |       |
+| sex_upon_intake  | varchar(100) | NO   |     | NULL    |       |
++------------------+--------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> insert into animal_ins (animal_id, animal_type, datetime, intake_condition, name, sex_upon_intake)
+    -> values
+    -> ('A352713', 'Cat', 2017-04-13 16:29:00, 'Normal', 'gia', 'Spayed Female');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '16:29:00, 'Normal', 'gia', 'Spayed Female')' at line 3
+mysql> insert into animal_ins (animal_id, animal_type, datetime, intake_condition, name, sex_upon_intake)
+    -> values
+    -> ('A352713', 'Cat', '2017-04-13 16:29:00', 'Normal', 'gia', 'Spayed Female')
+    -> ('A350375', 'Cat', '2017-03-06 15:01:00', 'Normal', 'Meo', 'Neutered Male');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('A350375', 'Cat', '2017-03-06 15:01:00', 'Normal', 'Meo', 'Neutered Male')' at line 4
+mysql> INSERT INTO ANIMAL_INS (ANIMAL_ID, ANIMAL_TYPE, DATETIME, INTAKE_CONDITION, NAME, SEX_UPON_INTAKE)
+    -> VALUES
+    -> ('A352713', 'Cat', '2017-04-13 16:29:00', 'Normal', 'Gia', 'Spayed Female'),
+    -> ('A350375', 'Cat', '2017-03-06 15:01:00', 'Normal', 'Meo', 'Neutered Male');
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE ANIMAL_OUTS (
+    ->     ANIMAL_ID        VARCHAR(10)  NOT NULL,
+    ->     ANIMAL_TYPE      VARCHAR(20)  NOT NULL,
+    ->     DATETIME         DATETIME       NOT NULL,
+    ->     NAME              VARCHAR(50),
+    ->     SEX_UPON_OUTCOME VARCHAR(100) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> INSERT INTO ANIMAL_OUTS (ANIMAL_ID, ANIMAL_TYPE, DATETIME, NAME, SEX_UPON_OUTCOME)
+    -> VALUES
+    -> ('A349733', 'Dog', '2017-09-27 19:09:00', 'Allie', 'Spayed Female'),
+    -> ('A352713', 'Cat', '2017-04-25 12:25:00', 'Gia', 'Spayed Female'),
+    -> ('A349990', 'Cat', '2018-02-02 14:18:00', 'Spice', 'Spayed Female');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from animal_ins;
++-----------+-------------+---------------------+------------------+------+-----------------+
+| ANIMAL_ID | ANIMAL_TYPE | DATETIME            | INTAKE_CONDITION | name | sex_upon_intake |
++-----------+-------------+---------------------+------------------+------+-----------------+
+| A352713   | Cat         | 2017-04-13 16:29:00 | Normal           | Gia  | Spayed Female   |
+| A350375   | Cat         | 2017-03-06 15:01:00 | Normal           | Meo  | Neutered Male   |
++-----------+-------------+---------------------+------------------+------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from animal_outs;
++-----------+-------------+---------------------+-------+------------------+
+| ANIMAL_ID | ANIMAL_TYPE | DATETIME            | NAME  | SEX_UPON_OUTCOME |
++-----------+-------------+---------------------+-------+------------------+
+| A349733   | Dog         | 2017-09-27 19:09:00 | Allie | Spayed Female    |
+| A352713   | Cat         | 2017-04-25 12:25:00 | Gia   | Spayed Female    |
+| A349990   | Cat         | 2018-02-02 14:18:00 | Spice | Spayed Female    |
++-----------+-------------+---------------------+-------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> select *
+    -> from animal_ins as a right join
+    -> animal_outs as b
+    -> on a.animal_id = b.animal_id;
++-----------+-------------+---------------------+------------------+------+-----------------+-----------+-------------+---------------------+-------+------------------+
+| ANIMAL_ID | ANIMAL_TYPE | DATETIME            | INTAKE_CONDITION | name | sex_upon_intake | ANIMAL_ID | ANIMAL_TYPE | DATETIME            | NAME  | SEX_UPON_OUTCOME |
++-----------+-------------+---------------------+------------------+------+-----------------+-----------+-------------+---------------------+-------+------------------+
+| NULL      | NULL        | NULL                | NULL             | NULL | NULL            | A349733   | Dog         | 2017-09-27 19:09:00 | Allie | Spayed Female    |
+| A352713   | Cat         | 2017-04-13 16:29:00 | Normal           | Gia  | Spayed Female   | A352713   | Cat         | 2017-04-25 12:25:00 | Gia   | Spayed Female    |
+| NULL      | NULL        | NULL                | NULL             | NULL | NULL            | A349990   | Cat         | 2018-02-02 14:18:00 | Spice | Spayed Female    |
++-----------+-------------+---------------------+------------------+------+-----------------+-----------+-------------+---------------------+-------+------------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from animal_ins as a right join animal_outs as b on a.animal_id = b.animal_id where a.animal_id is null;
++-----------+-------------+----------+------------------+------+-----------------+-----------+-------------+---------------------+-------+------------------+
+| ANIMAL_ID | ANIMAL_TYPE | DATETIME | INTAKE_CONDITION | name | sex_upon_intake | ANIMAL_ID | ANIMAL_TYPE | DATETIME            | NAME  | SEX_UPON_OUTCOME |
++-----------+-------------+----------+------------------+------+-----------------+-----------+-------------+---------------------+-------+------------------+
+| NULL      | NULL        | NULL     | NULL             | NULL | NULL            | A349733   | Dog         | 2017-09-27 19:09:00 | Allie | Spayed Female    |
+| NULL      | NULL        | NULL     | NULL             | NULL | NULL            | A349990   | Cat         | 2018-02-02 14:18:00 | Spice | Spayed Female    |
++-----------+-------------+----------+------------------+------+-----------------+-----------+-------------+---------------------+-------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> select b.animal_id, b.name from animal_ins as a right join animal_outs as b on a.animal_id = b.animal_id where a.animal_id is null order by b.animal_id;
++-----------+-------+
+| animal_id | name  |
++-----------+-------+
+| A349733   | Allie |
+| A349990   | Spice |
++-----------+-------+
+2 rows in set (0.01 sec)
+
+mysql> select * from students;
++-----------+-----+-----------------+
+| name      | age | address         |
++-----------+-----+-----------------+
+| 이황      |  28 | 경상북도        |
+| 정약용    |  29 | 경기도          |
+| 김정호    |  30 | 전라북도        |
+| 박지원    |  31 | 전라북도        |
+| 김홍도    |  32 | 경기도          |
+| 신윤복    |  33 | 서울특별시      |
+| 김광균    |  34 | 서울특별시      |
+| 한용운    |  35 | 경상남도        |
+| 박두진    |  36 | 경기도          |
+| 가내주    |  28 | 경남사람        |
+| 가내재    |  28 | 경상도          |
+| 하하      |  28 | 무슨기준        |
++-----------+-----+-----------------+
+12 rows in set (0.00 sec)
+
+mysql> select count(*) from classes;
++----------+
+| count(*) |
++----------+
+|       11 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select name, age, (select avg(age) from students)
+    -> from students
+    -> where age < 30;
++-----------+-----+---------------------------------+
+| name      | age | (select avg(age) from students) |
++-----------+-----+---------------------------------+
+| 이황      |  28 |                         31.0000 |
+| 정약용    |  29 |                         31.0000 |
+| 가내주    |  28 |                         31.0000 |
+| 가내재    |  28 |                         31.0000 |
+| 하하      |  28 |                         31.0000 |
++-----------+-----+---------------------------------+
+5 rows in set (0.01 sec)
+
+mysql> select name, age, (select avg(age) from students) as avg_age from students wdents where age < 30;
++-----------+-----+---------+
+| name      | age | avg_age |
++-----------+-----+---------+
+| 이황      |  28 | 31.0000 |
+| 정약용    |  29 | 31.0000 |
+| 가내주    |  28 | 31.0000 |
+| 가내재    |  28 | 31.0000 |
+| 하하      |  28 | 31.0000 |
++-----------+-----+---------+
+5 rows in set (0.00 sec)
+
+mysql> # 스칼라 서브쿼리 (값 고정)
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select name, age, (select count(*) from students) as cnt from students where age < 30;
++-----------+-----+------+
+| name      | age | cnt  |
++-----------+-----+------+
+| 이황      |  28 |   12 |
+| 정약용    |  29 |   12 |
+| 가내주    |  28 |   12 |
+| 가내재    |  28 |   12 |
+| 하하      |  28 |   12 |
++-----------+-----+------+
+5 rows in set (0.00 sec)
+
+mysql> select *
+    -> from (select * from classes) as a;
++-----------+--------------------+
+| name      | class_name         |
++-----------+--------------------+
+| 이황      | 데이터베이스       |
+| 이황      | 알고리즘           |
+| 정약용    | 데이터베이스       |
+| 김정호    | 자료구조           |
+| 박지원    | 데이터베이스       |
+| 김홍도    | 알고리즘           |
+| 신윤복    | 자료구조           |
+| 신윤복    | 알고리즘           |
+| 김광균    | 데이터베이스       |
+| 김광균    | 자료구조           |
+| 김광균    | 알고리즘           |
++-----------+--------------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from classes;
++-----------+--------------------+
+| name      | class_name         |
++-----------+--------------------+
+| 이황      | 데이터베이스       |
+| 이황      | 알고리즘           |
+| 정약용    | 데이터베이스       |
+| 김정호    | 자료구조           |
+| 박지원    | 데이터베이스       |
+| 김홍도    | 알고리즘           |
+| 신윤복    | 자료구조           |
+| 신윤복    | 알고리즘           |
+| 김광균    | 데이터베이스       |
+| 김광균    | 자료구조           |
+| 김광균    | 알고리즘           |
++-----------+--------------------+
+11 rows in set (0.00 sec)
+
+mysql> # claases를 가상테이블로 사용하기
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select *
+    -> from (select * from classes)
+    -> /c
+    -> /!c
+    -> \c
+mysql> select *
+    -> from (
+    -> select * from classes
+    -> where class_name in ('데이터베이스' , '알고리즘')
+    -> ) as a;
++-----------+--------------------+
+| name      | class_name         |
++-----------+--------------------+
+| 이황      | 데이터베이스       |
+| 이황      | 알고리즘           |
+| 정약용    | 데이터베이스       |
+| 박지원    | 데이터베이스       |
+| 김홍도    | 알고리즘           |
+| 신윤복    | 알고리즘           |
+| 김광균    | 데이터베이스       |
+| 김광균    | 알고리즘           |
++-----------+--------------------+
+8 rows in set (0.00 sec)
+
+mysql> select *  from ( select * from classes where class_name in ('데이터베이스' , '알고리즘') ) as a
+    -> inner join students as b
+    -> on a.name = b.name;
++-----------+--------------------+-----------+-----+-----------------+
+| name      | class_name         | name      | age | address         |
++-----------+--------------------+-----------+-----+-----------------+
+| 이황      | 알고리즘           | 이황      |  28 | 경상북도        |
+| 이황      | 데이터베이스       | 이황      |  28 | 경상북도        |
+| 정약용    | 데이터베이스       | 정약용    |  29 | 경기도          |
+| 박지원    | 데이터베이스       | 박지원    |  31 | 전라북도        |
+| 김홍도    | 알고리즘           | 김홍도    |  32 | 경기도          |
+| 신윤복    | 알고리즘           | 신윤복    |  33 | 서울특별시      |
+| 김광균    | 알고리즘           | 김광균    |  34 | 서울특별시      |
+| 김광균    | 데이터베이스       | 김광균    |  34 | 서울특별시      |
++-----------+--------------------+-----------+-----+-----------------+
+8 rows in set (0.00 sec)
+
+mysql> select b.name, b.age, b.address from ( select * from classes where class_name in ('데이터베이스' , '알고리즘') ) as a inne
+    -> r join students as b
+    -> on a.name = b.name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'r join students as b
+on a.name = b.name' at line 2
+mysql> select b.name, b.age, b.address from ( select * from classes where class_name in ('데이터베이스' , '알고리즘') )
+    -> as a
+    -> inner join students as b
+    -> on a.name = b.name;
++-----------+-----+-----------------+
+| name      | age | address         |
++-----------+-----+-----------------+
+| 이황      |  28 | 경상북도        |
+| 이황      |  28 | 경상북도        |
+| 정약용    |  29 | 경기도          |
+| 박지원    |  31 | 전라북도        |
+| 김홍도    |  32 | 경기도          |
+| 신윤복    |  33 | 서울특별시      |
+| 김광균    |  34 | 서울특별시      |
+| 김광균    |  34 | 서울특별시      |
++-----------+-----+-----------------+
+8 rows in set (0.00 sec)
+                                                                                                              리즘'ysql> select b.name, b.age, b.address,ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from classes where class_name in ('데이터베이스' , '알고리즘'' at line 1
+mysql> select b.name, b.age, b.address, rom ( select * from classes where class_name in ('데이터베이스' , '알고리즘') ) as a  inner join students as b on a.name = b.name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from classes where class_name in ('데이터베이스' , '알고리즘'' at line 1
+mysql> select b.name, b.age, b.address, a.classes_name from ( select * from classes where class_name in ('데이터베이스' , '알고리즘') )
+    -> as a
+    -> inner join students as b
+    -> on a.name = b.name;
+ERROR 1054 (42S22): Unknown column 'a.classes_name' in 'field list'
+mysql> select b.name, b.age, b.address, a.class_name from ( select * from classes where class_name in ('데이터베이스' , '알고리즘') )
+    -> as a
+    -> inner join students as b
+    -> on a.name = b.name;
++-----------+-----+-----------------+--------------------+
+| name      | age | address         | class_name         |
++-----------+-----+-----------------+--------------------+
+| 이황      |  28 | 경상북도        | 알고리즘           |
+| 이황      |  28 | 경상북도        | 데이터베이스       |
+| 정약용    |  29 | 경기도          | 데이터베이스       |
+| 박지원    |  31 | 전라북도        | 데이터베이스       |
+| 김홍도    |  32 | 경기도          | 알고리즘           |
+| 신윤복    |  33 | 서울특별시      | 알고리즘           |
+| 김광균    |  34 | 서울특별시      | 알고리즘           |
+| 김광균    |  34 | 서울특별시      | 데이터베이스       |
++-----------+-----+-----------------+--------------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT B.NAME, AGE, ADDRESS, CLASS_NAME
+    -> FROM (
+    ->     SELECT * FROM CLASSES
+    ->     WHERE CLASS_NAME IN ('데이터베이스', '알고리즘')
+    ->     ) AS A
+    -> INNER JOIN STUDENTS B ON A.NAME = B.NAME;
++-----------+-----+-----------------+--------------------+
+| NAME      | AGE | ADDRESS         | class_name         |
++-----------+-----+-----------------+--------------------+
+| 이황      |  28 | 경상북도        | 알고리즘           |
+| 이황      |  28 | 경상북도        | 데이터베이스       |
+| 정약용    |  29 | 경기도          | 데이터베이스       |
+| 박지원    |  31 | 전라북도        | 데이터베이스       |
+| 김홍도    |  32 | 경기도          | 알고리즘           |
+| 신윤복    |  33 | 서울특별시      | 알고리즘           |
+| 김광균    |  34 | 서울특별시      | 알고리즘           |
+| 김광균    |  34 | 서울특별시      | 데이터베이스       |
++-----------+-----+-----------------+--------------------+
+8 rows in set (0.00 sec)
+
+mysql>
+mysql> SELECT S.NAME, AGE, ADDRESS, CLASS_NAME
+    -> FROM CLASSES C
+    -> JOIN STUDENTS S ON C.NAME = S.NAME
+    -> WHERE C.CLASS_NAME IN('데이터베이스', '알고리즘');
++-----------+-----+-----------------+--------------------+
+| NAME      | AGE | ADDRESS         | CLASS_NAME         |
++-----------+-----+-----------------+--------------------+
+| 이황      |  28 | 경상북도        | 알고리즘           |
+| 이황      |  28 | 경상북도        | 데이터베이스       |
+| 정약용    |  29 | 경기도          | 데이터베이스       |
+| 박지원    |  31 | 전라북도        | 데이터베이스       |
+| 김홍도    |  32 | 경기도          | 알고리즘           |
+| 신윤복    |  33 | 서울특별시      | 알고리즘           |
+| 김광균    |  34 | 서울특별시      | 알고리즘           |
+| 김광균    |  34 | 서울특별시      | 데이터베이스       |
++-----------+-----+-----------------+--------------------+
+8 rows in set (0.00 sec)
+
+mysql> # 서브쿼리를 사용하는 이유 -> 아래의 경우에는 전체데이터 join -> 서브쿼리를 사용한 경우는 걸러진데이터를 Join
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select name, age, address
+    -> from students
+    -> where (select name from classes where class_name in ('데이터베이스', '알고리즘')).name = students.name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.name = students.name' at line 3
+mysql> select name, age, address
+    -> from students
+    -> where name in ()
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 3
+mysql> select name, age, address
+    -> from students
+    -> where name in (
+    -> select name
+    -> from classes
+    -> where class_name in ('데이터베이스', '알고리즘'));
++-----------+-----+-----------------+
+| name      | age | address         |
++-----------+-----+-----------------+
+| 이황      |  28 | 경상북도        |
+| 정약용    |  29 | 경기도          |
+| 박지원    |  31 | 전라북도        |
+| 김홍도    |  32 | 경기도          |
+| 신윤복    |  33 | 서울특별시      |
+| 김광균    |  34 | 서울특별시      |
++-----------+-----+-----------------+
+6 rows in set (0.01 sec)
+
+mysql> #where 내의 서브쿼리를 가장 자주쓴다고 한다
+Query OK, 0 rows affected (0.00 sec)
+
