@@ -1,0 +1,100 @@
+Last login: Thu Jun 27 10:24:09 on ttys000
+ganghyeju@hyezuu-MacBookPro ~ % mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 59
+Server version: 8.3.0 Homebrew
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use testdb;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+mysql> desc accounts;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| name    | varchar(100) | NO   |     | NULL    |       |
+| balance | int          | NO   |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+#현재 오토커밋 켜져있는지 보기
+mysql> show variables like 'autocommit';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| autocommit    | ON    |
++---------------+-------+
+1 row in set (0.00 sec)
+#오토커밋 끄기
+mysql> set autocommit = 0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show variables like 'autocommit';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| autocommit    | OFF   |
++---------------+-------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_testdb |
++------------------+
+| accounts         |
+| ANIMAL_INS       |
+| ANIMAL_OUTS      |
+| classes          |
+| students         |
++------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from accounts;
+Empty set (0.00 sec)
+
+mysql> #첫번째 테스트 -> insert 이후 조회했지만 보이지 않는다
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from accounts;
+Empty set (0.00 sec)
+
+mysql> #왜 여전히 적용이 안됐냐 ? begin을 안해서 그렇다
+Query OK, 0 rows affected (0.00 sec)
+
+#begin 해주면 다시 보여용
+mysql> begin;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from accounts;
++------+---------+
+| name | balance |
++------+---------+
+| A    |   10000 |
++------+---------+
+1 row in set (0.00 sec)
+
+mysql> #아 두번째 탭에서도 begin을 입력해서 트랜잭션을 열어줘야했다..
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> #새로운 테스트
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from accounts;
++------+---------+
+| name | balance |
++------+---------+
+| A    |   10000 |
++------+---------+
+1 row in set (0.00 sec)
+
+mysql> #롤백은 트랜잭션내에서 이루어진 모든 변경사항이 취소된다. 별도의 커밋명령어를 실행할 필요가 없음
